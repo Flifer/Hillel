@@ -1,0 +1,39 @@
+header {
+    margin-top: 15px;
+    margin-bottom: 1vh;
+}
+.glyphicon {
+    font-size: 28px;
+}
+header ul li {
+    margin: 10px;
+}
+header ul li a {
+    padding: 5px;
+    font-size: larger;
+}
+.carousel {
+    height: 90%;
+    margin-bottom: 5%;
+}
+div ul.stucked li {
+    padding: 0px;
+}
+.dropdown button {
+    width: 100%;
+    padding: 5% 15%;
+    margin: 0 auto;
+}
+.form-group {
+    margin: 3%;
+}
+div.raw img {
+    width: 50%;
+    margin: 1px;
+}
+.bordered {
+    border: 1px #000 solid;
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 3%;
+}

@@ -1,0 +1,11 @@
+.fa {
+    font-size: 140px;
+    color: white;
+    padding: 0px 10px 0px;
+    border-radius: 40px;
+    background-image: linear-gradient(to right top, #feda75, #ffbb62, #ff9a5b, #fd785c, #f15665, #e94473, #db3582, #c82e92, #b738a6, #9f45b9, #7f50c9, #4f5bd5);
+}
+
+.fa:hover {
+    text-shadow: 3px 3px 4px #000;
+}
