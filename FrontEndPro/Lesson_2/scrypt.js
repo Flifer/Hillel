@@ -1,8 +1,17 @@
-calc()
+let operator = prompt ("Choose an operator: +, -, *, /")
+let operandA = prompt ("Choose the first number")
+let operandB = prompt ("Choose the second number")
+verification()
 
+function verification() {
+    if (isNaN(operandA) || isNaN(operandB)) {
+        alert("Only numbers, please")
+    } else {
+        calc()
+    }
+}
 function calc() {
     let result;
-    let operator = prompt ("Choose an operator: +, -, *, /")
         switch (operator) {
             case '+':
             result = add();
@@ -27,41 +36,13 @@ function calc() {
 }
 
 function add() {
-    let operandA = prompt ("Choose the first number")
-    let operandB = prompt ("Choose the second number")
-    if (isNaN(operandA) || isNaN(operandB)) {
-        return "Only numbers, please";
-    } else {
-        return `${operandA} + ${operandB} = ` + `${Number(operandA) + Number(operandB)}`;
-    }
-}
+    return `${operandA} + ${operandB} = ` + `${Number(operandA) + Number(operandB)}`}
 
 function sub() {
-    let operandA = prompt ("Choose the first number")
-    let operandB = prompt ("Choose the second number")
-    if (isNaN(operandA) || isNaN(operandB)) {
-        return "Only numbers, please";
-    } else {
-        return `${operandA} - ${operandB} = ` + `${operandA - operandB}`;
-    }
-}
+    return `${operandA} - ${operandB} = ` + `${operandA - operandB}`}
 
 function mult() {
-    let operandA = prompt ("Choose the first number")
-    let operandB = prompt ("Choose the second number")
-    if (isNaN(operandA) || isNaN(operandB)) {
-        return "Only numbers, please";
-    } else {
-        return `${operandA} * ${operandB} = ` + `${operandA * operandB}`;
-    }
-}
+    return `${operandA} * ${operandB} = ` + `${operandA * operandB}`}
 
 function div() {
-    let operandA = prompt ("Choose the first number")
-    let operandB = prompt ("Choose the second number")
-    if (isNaN(operandA) || isNaN(operandB)) {
-        return "Only numbers, please";
-    } else {
-        return `${operandA} / ${operandB} = ` + `${operandA / operandB}`;
-    }
-}
+    return `${operandA} / ${operandB} = ` + `${operandA / operandB}`}
