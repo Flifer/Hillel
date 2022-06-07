@@ -1,48 +1,65 @@
-let operator = prompt ("Choose an operator: +, -, *, /")
-let operandA = prompt ("Choose the first number")
-let operandB = prompt ("Choose the second number")
+let operator = getOperator()
+let operandA = getOperandA()
+let operandB = getOperandB()
+
 verification()
 
-function verification() {
+function getOperator() {
+    return prompt ("Choose an operator: +, -, *, /")
+}
+
+function getOperandA() {
+    return prompt ("Choose the first number")
+}
+
+function getOperandB() {
+    return prompt ("Choose the second number")
+}
+
+function verification(operandA, operandB) {
     if (isNaN(operandA) || isNaN(operandB)) {
         alert("Only numbers, please")
     } else {
-        calc()
+        calc(operandA, operator, operandB)
     }
 }
-function calc() {
+
+function calc(operandA, operator, operandB) {
     let result;
         switch (operator) {
             case '+':
-            result = add();
+            result = add(operandA, operandB);
             break;
 
             case '-':
-            result = sub();
+            result = sub(operandA, operandB);
             break;
 
             case '*':
-            result = mult();
+            result = mult(operandA, operandB);
             break;
 
             case '/':
-            result = div();
+            result = div(operandA, operandB);
             break;
 
             default:
-            result = "ERROR on stage of choosing operator"
+            result = "ERROR on stage of choosing operator";
         }
     alert(result)
 }
 
-function add() {
-    return `${operandA} + ${operandB} = ` + `${Number(operandA) + Number(operandB)}`}
+function add(operandA, operandB) {
+    return given() + `${Number(operandA) + Number(operandB)}`}
 
-function sub() {
-    return `${operandA} - ${operandB} = ` + `${operandA - operandB}`}
+function sub(operandA, operandB) {
+    return given() + `${operandA - operandB}`}
 
-function mult() {
-    return `${operandA} * ${operandB} = ` + `${operandA * operandB}`}
+function mult(operandA, operandB) {
+    return given() + `${operandA * operandB}`}
 
-function div() {
-    return `${operandA} / ${operandB} = ` + `${operandA / operandB}`}
+function div(operandA, operandB) {
+    return given() + `${operandA / operandB}`}
+
+function given(operandA, operator, operandB) {
+    return `${operandA} ${operator} ${operandB} = `}
