@@ -16,15 +16,15 @@ function getOperandB() {
     return prompt ("Choose the second number")
 }
 
-function verification(operandA, operandB) {
+function verification() {
     if (isNaN(operandA) || isNaN(operandB)) {
         alert("Only numbers, please")
     } else {
-        calc(operandA, operator, operandB)
+        calc()
     }
 }
 
-function calc(operandA, operator, operandB) {
+function calc() {
     let result;
         switch (operator) {
             case '+':
@@ -49,17 +49,17 @@ function calc(operandA, operator, operandB) {
     alert(result)
 }
 
-function add(operandA, operandB) {
+function add() {
     return given() + `${Number(operandA) + Number(operandB)}`}
 
-function sub(operandA, operandB) {
+function sub() {
     return given() + `${operandA - operandB}`}
 
-function mult(operandA, operandB) {
+function mult() {
     return given() + `${operandA * operandB}`}
 
-function div(operandA, operandB) {
+function div() {
     return given() + `${operandA / operandB}`}
 
-function given(operandA, operator, operandB) {
+function given() {
     return `${operandA} ${operator} ${operandB} = `}
