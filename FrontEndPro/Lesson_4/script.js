@@ -26,74 +26,46 @@ function getOperandsCount() {
 
 function getOperands() {
     let operands = [];
-
         while (operands.length < operandsCount) {
-            operands.push(prompt ('Choose the number'));
+            operands.push(getOperand());
         }
-
-        for (i=0; i<operands.length; i++) {
-            if (isNaN(operands[i])) {operands[i] = prompt('You failed 1 of numbers, rewrite it');
-            }
-        }
-
     return operands;
+}
+
+function getOperand() {
+    let operand
+        do {
+            operand = prompt('Choose the number')
+        } while (isNaN(operand));
+    return operand
 }
 
 function calc() {
     let result;
+    let startNum = Number(operands[0])
+    for (i=1; i<operands.length; i++) {
         switch (operator) {
             case '+':
-            result = add();
+            result = given() + `${startNum += Number(operands[i])}`;
             break;
 
             case '-':
-            result = sub();
+            result = given() + `${startNum -= operands[i]}`;
             break;
 
             case '*':
-            result = mult();
+            result = given() + `${startNum *= operands[i]}`;
             break;
 
             case '/':
-            result = div();
+            result = given() + `${startNum /= operands[i]}`;
             break;
 
             default:
             result = "ERROR on stage of choosing operator";
         }
+    } 
     alert(result);
-}
-
-function add() {
-    let add=0;
-    for (i=0; i<operands.length; i++) {
-    add += Number(operands[i]);
-    } 
-return given() + `${add}`;
-}
-
-function sub() {
-    let sub = operands[0];
-    for (i=1; i<operands.length; i++) {
-    sub -= operands[i];
-    } 
-return given() + `${sub}`;
-}
-
-function mult() {
-    let mult = operands[0];
-    for (i=1; i<operands.length; i++) {
-    mult *= operands[i];
-    } 
-return given() + `${mult}`;
-}
-
-function div() {
-    let div = operands[0] ;
-    for (i=1; i<operands.length; i++) {
-    div /= operands[i];
-    } 
-return given() + `${div}`;
 }
 
 function given() {
