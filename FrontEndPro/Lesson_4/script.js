@@ -1,27 +1,43 @@
 const actions = ['+', '-', '*', '/'];
 
-let operator;
-    do {
-        operator = prompt (`Choose an operator: ${actions.join(', ')}`, '*');
-    } while (!actions.includes(operator));
+let operator = getOperator()
 
-let operandsCount;
-    do {
-        operandsCount = prompt ('Enter the amount of operands', '2');
-    } while (operandsCount <= 1 || operandsCount > 5 || isNaN(operandsCount));
+let operandsCount = getOperandsCount()
 
-let operands = [];
-
-while (operands.length < operandsCount) {
-    operands.push(prompt ('Choose the number'));
-}
-
-for (i=0; i<operands.length; i++) {
-    if (isNaN(operands[i])) {operands[i] = prompt('You failed 1 of numbers, rewrite it');
-    }
-}
+let operands = getOperands()
 
 calc();
+
+function getOperator() {
+    let op;
+        do {
+            op = prompt (`Choose an operator: ${actions.join(', ')}`, '*');
+        } while (!actions.includes(op));
+    return op
+}
+
+function getOperandsCount() {
+   let opCount;
+        do {
+            opCount = prompt ('Enter the amount of operands', '2');
+        } while (opCount <= 1 || opCount > 5 || isNaN(opCount));
+    return opCount; 
+}
+
+function getOperands() {
+    let operands = [];
+
+        while (operands.length < operandsCount) {
+            operands.push(prompt ('Choose the number'));
+        }
+
+        for (i=0; i<operands.length; i++) {
+            if (isNaN(operands[i])) {operands[i] = prompt('You failed 1 of numbers, rewrite it');
+            }
+        }
+
+    return operands;
+}
 
 function calc() {
     let result;
@@ -75,7 +91,7 @@ return given() + `${mult}`;
 function div() {
     let div = operands[0] ;
     for (i=1; i<operands.length; i++) {
-    div = operands[0] /= operands[i];
+    div /= operands[i];
     } 
 return given() + `${div}`;
 }
