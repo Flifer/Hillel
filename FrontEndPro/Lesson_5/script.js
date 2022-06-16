@@ -25,35 +25,21 @@ averageStudentMark(Number(prompt('Choose student`s id')));
 
 averageGroupMark(students);
 
-function averageStudentMark(x) {
-
-    let student = students.find(student => student.id === x)
-
-        const markSum = student.marks.reduce((acc, curent) => {
-            const Sum = acc + curent;
-            return Sum });
-
+function averageStudentMark(Num) {
+    let student = students.find(student => student.id === Num)
+        const markSum = student.marks.reduce((acc, curent) => {const Sum = acc + curent; return Sum });
     let averageMark = markSum / student.marks.length
-
 return alert(`average mark of the student ${student.name} is ${averageMark}`)
 }
 
-function averageGroupMark(x) {
-
+function averageGroupMark(arr) {
     let averageMarksArray = []
-
-    for (let i = 0; i < x.length; i++) {
-        averageMarksArray.push(
-            x[i].marks.reduce((acc, curent) => {
-                const Sum = acc + curent;
-                return Sum }
-            ) / x[i].marks.length)
-    }
-
-    GroupMark=averageMarksArray.reduce((acc, curent) => {
-        const Sum = acc + curent;
-        return Sum }
+      for (let i = 0; i < arr.length; i++) {
+          averageMarksArray.push(
+              arr[i].marks.reduce((acc, curent) => {const Sum = acc + curent; return Sum }
+              ) / arr[i].marks.length)
+      }
+    let GroupMark = averageMarksArray.reduce((acc, curent) => {const Sum = acc + curent; return Sum }
     ) / averageMarksArray.length
-
 return alert(`average mark of the group is ${GroupMark}`)
 }
