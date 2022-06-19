@@ -27,7 +27,7 @@ averageGroupMark(students);
 
 function averageStudentMark(Num) {
     let student = students.find(student => student.id === Num)
-        const markSum = student.marks.reduce((acc, curent) => {const Sum = acc + curent; return Sum });
+        const markSum = student.marks.reduce((acc, curent) => acc + curent);
     let averageMark = markSum / student.marks.length
 return alert(`average mark of the student ${student.name} is ${averageMark}`)
 }
@@ -36,8 +36,8 @@ function averageGroupMark(arr) {
     let averageMarksArray = []
       for (let i = 0; i < arr.length; i++) {
         averageMarksArray.push(
-        arr[i].marks.reduce((acc, curent) => {const Sum = acc + curent; return Sum }) / arr[i].marks.length)
+        arr[i].marks.reduce((acc, curent) => acc + curent) / arr[i].marks.length)
       }
-    let GroupMark = averageMarksArray.reduce((acc, curent) => {const Sum = acc + curent; return Sum }) / averageMarksArray.length
+    let GroupMark = averageMarksArray.reduce((acc, curent) => acc + curent) / averageMarksArray.length
 return alert(`average mark of the group is ${GroupMark}`)
 }
