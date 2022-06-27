@@ -3,12 +3,12 @@ function createCalculator(base) {
         add: (addNum) => {
             if (!isNaN(addNum)) {
                 base += addNum;
-            } else base
+            }
         },
         sub: (subNum) => {
             if (!isNaN(subNum)) {
                 base -= subNum;
-            } else base
+            }
         },
         set: () => {
             do {
