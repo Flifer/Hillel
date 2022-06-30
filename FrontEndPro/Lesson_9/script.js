@@ -8,9 +8,11 @@ button.addEventListener('click', onButtonClick);
 
 function onButtonClick() {
     let li = document.createElement('li');
-    h3.style.display = 'none';
     if (input.value !== '') {
+        h3.style.display = 'none';
         li.textContent = input.value;
-        ol.append(li);}
-    input.value = '';
+        ol.append(li);
+        input.value = '';
+    }
+    
 }
