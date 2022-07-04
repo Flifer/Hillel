@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact list</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./script.js"></script>
+</head>
+<body>
+    <h1>Holla! Hello! Privet! Salut!</h1>
+    <h2>It is your contact list</h2>
+    <h3>It is empty, let`s add your first contact</h3>
+
+    <ul class="contact-list_title">
+        <li>Name</li>
+        <li>Surname</li>
+        <li>Phone number</li>
+    </ul>
+
+    <ul class="contact-list">
+    </ul>
+
+    <label>
+        <input id="name" type="text" placeholder="Name">
+        <input id="surname" type="text" placeholder="Surname">
+        <input id="phone-number" type="tel" placeholder="Phone number">
+        <button id="add-contact-btn">Add contact</button>
+    </label>
+
+    <script id="contact-list__item-template" type="text/template">
+        <li class="contact-item">
+            <span class="contact-item-el">{name}</span>
+            <span class="contact-item-el">{surname}</span>
+            <span class="contact-item-el">{phoneNumber}</span>
+            <button class="deleteBtn">Delete</button>
+        </li>
+    </script>
+</body>
+</html>

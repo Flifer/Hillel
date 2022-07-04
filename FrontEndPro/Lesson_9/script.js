@@ -14,5 +14,4 @@ function onButtonClick() {
         ol.append(li);
         input.value = '';
     }
-    
 }
