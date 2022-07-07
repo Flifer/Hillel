@@ -31,11 +31,11 @@ function addContactItem() {
 }
 
 function onDeleteBtnClick(e) {
-    const todoItem = getContactListItem(e.target);
+    const contactItem = getContactListItem(e.target);
 
-    if (todoItem) {
+    if (contactItem) {
         if (e.target.classList.contains('deleteBtn')) {
-            todoItem.style.display = 'none';
+            contactItem.style.display = 'none';
             return;
         }
         alert('calling a number')
