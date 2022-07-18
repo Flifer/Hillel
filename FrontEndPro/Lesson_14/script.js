@@ -6,7 +6,7 @@ class Group {
             this.#students.push(student)
         }
     }
-    getStudentsAmmount() {
+    getStudentsAmount() {
         return this.#students.length
     }
     getAverageMark() {
@@ -32,12 +32,12 @@ group.addStudent(new Student('John', [10, 8]));
 group.addStudent(new Student('Alex', [10, 9]));
 group.addStudent(new Student('Bob', [6, 10,]));
 
-console.log(group.getStudentsAmmount())
+console.log(group.getStudentsAmount())
 
 group.addStudent({});
-console.log(group.getStudentsAmmount())
+console.log(group.getStudentsAmount())
 
 console.log(group.getAverageMark())
 
 group.students = [new Student('John', [10, 10, 5, 10])];
-console.log(group.getStudentsAmmount())
+console.log(group.getStudentsAmount())
