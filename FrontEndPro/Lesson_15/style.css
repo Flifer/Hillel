@@ -1,0 +1,39 @@
+.tabs-item {
+    margin-bottom: 5px;
+    width: 200px;
+    margin-right: 30px;
+}
+
+.tabs-item-header {
+    background-color: gold;
+    border: 2px solid darkred;
+}
+
+.tabs-item-header:hover {
+    box-shadow: 2px 2px;
+    text-shadow: 2px 2px 5px #000;
+    cursor: pointer;
+}
+
+.tabs-item-content {
+    height: 50px;
+    display: none;
+}
+
+.open {
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 0;
+}
+
+.active {
+    background-color: darkred;
+    color: antiquewhite;
+    font-weight: bolder;
+}
+
+#tabs {
+    display: flex;
+    position: relative;
+}
