@@ -1,26 +1,37 @@
-const input = document.querySelector('#gitUserLoginInput');
+const API_GITHUB_LINK = 'https://api.github.com/users/{{login}}'
+
+const loginInput = document.querySelector('#gitUserLoginInput');
 const getUserBtn = document.querySelector('#getUserBtn');
 const container = document.querySelector('#container');
 
 getUserBtn.addEventListener('click', onGetUserBtnClick);
 
 function onGetUserBtnClick(e) {
-    if (input.value !== '') {
-        if (container.children) {
-            container.innerHTML = ''
-        }
-        let url = `https://api.github.com/users/${input.value}`
-        fetch(url)
-        .then(response => response.json())
-        .then(renderInfo)   
-        input.value = ''
+    const login = loginInput.value;
+    if (login) {
+        getGitUser(login)
+        .then(user => {
+            renderUser(user);
+            clearForm();
+          })
+        .catch(showError)
     }
 }
 
-function renderInfo(info) {
-    const html = generateInfoHtml(info);
+function getGitUser(login) {
+    const url = API_GITHUB_LINK.replace('{{login}}', login);
+    return fetch(url).then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error('404! User not found');
+    });
+}
 
-    container.insertAdjacentHTML('beforeend', html);
+function renderUser(user) {
+    const infoHtml = generateInfoHtml(user);
+  
+    container.innerHTML = infoHtml;
 }
 
 function generateInfoHtml(info) {
@@ -38,4 +49,12 @@ function generateInfoHtml(info) {
            Наблюдаемых ${info.following} 
         </li>
     `;
+}
+
+function clearForm() {
+    loginInput.value = ''
+}
+
+function showError(e) {
+    alert(e.message);
 }
