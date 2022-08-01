@@ -145,5 +145,5 @@ function getToDoItem(el) {
 }
 
 function getToDoItemId(toDoItem) {
-    return toDoItem.getAttribute('data-id')
+    return toDoItem.dataset.id
 }
