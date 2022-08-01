@@ -1,12 +1,12 @@
-ADD_GOAL_BTN_CLASS = '.add-goal-btn'
+ADD_GOAL_BTN_CLASS = 'add-goal-btn'
 DELETE_BTN_CLASS = 'deleteBtn'
 DONE_TODO_ITEM_CLASS = 'done'
-TODO_ITEM_CLASS = '.toDoItem'
+TODO_ITEM_CLASS = 'toDoItem'
 
 const h3 = document.querySelector('h3');
 const ol = document.querySelector('ol');
 const input = document.querySelector('input');
-const addGoalButton = document.querySelector(ADD_GOAL_BTN_CLASS);
+const addGoalButton = document.querySelector(`.${ADD_GOAL_BTN_CLASS}`);
 
 addGoalButton.addEventListener('click', onButtonClick);
 ol.addEventListener('click', onGoalClick)
@@ -49,5 +49,5 @@ function onGoalClick(e) {
 }
 
 function getToDoItem(el) {
-    return el.closest(TODO_ITEM_CLASS);
+    return el.closest(`.${TODO_ITEM_CLASS}`);
 }
