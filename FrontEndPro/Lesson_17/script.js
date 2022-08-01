@@ -57,8 +57,7 @@ function deleteToDo(toDoItem, toDoItemId) {
     fetch(URL + toDoItemId, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
-    });
-    toDoList.removeChild(toDoItem)
+    }).than(toDoList.removeChild(toDoItem))
 }
 
 function editToDo(toDoItem, toDoItemId) {
@@ -68,8 +67,7 @@ function editToDo(toDoItem, toDoItemId) {
             method: 'PUT',
             body: JSON.stringify({title: editedToDo}),
             headers: {'Content-Type': 'application/json'},
-        });
-        toDoItem.querySelector('.title').innerText = editedToDo
+        }).than(toDoItem.querySelector('.title').innerText = editedToDo)
     }
 }
 
