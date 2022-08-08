@@ -10,24 +10,7 @@ albumsList.addEventListener('click', onAlbumsListClick)
 
 getAlbumList().then(renderAlbumList)
 
-function getAlbumList() {
-    return fetch(URL + 'albums').then(res => res.json());
-}
-
-function renderAlbumList(list) {
-    const html = list.map(generateAlbumHtml).join('');
-
-    albumsList.insertAdjacentHTML('beforeend', html);
-}
-
-function generateAlbumHtml(album) {
-
-    return `
-        <li data-id ="${album.id}" class = ${ALBUM_CLASS}>
-            <span>${album.title}</span>
-        </li>
-    `;
-}
+getAlbum(1).then(renderPhotos);
 
 function onAlbumsListClick(e) {
     e.preventDefault();
@@ -55,6 +38,24 @@ function onAlbumsListClick(e) {
     }
 }
 
+function getAlbumList() {
+    return fetch(URL + 'albums').then(res => res.json());
+}
+
+function renderAlbumList(list) {
+    const html = list.map(generateAlbumHtml).join('');
+    albumsList.insertAdjacentHTML('beforeend', html);
+}
+
+function generateAlbumHtml(album) {
+
+    return `
+        <li data-id ="${album.id}" class = ${ALBUM_CLASS}>
+            <span>${album.title}</span>
+        </li>
+    `;
+}
+
 function findActiveAlbum() {
     return albumsList.querySelector(`.${ACTIVE_CLASS}`);
 }
@@ -64,7 +65,6 @@ function getTargetAlbum(el) {
 }
 
 function getTargetAlbumId(el) {
-    debugger
     return el.dataset.id
 }
 
