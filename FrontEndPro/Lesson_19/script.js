@@ -33,6 +33,7 @@ function onAlbumsListClick(e) {
     }
 
     if (!activeAlbum) {
+        images.innerHTML = '';
         getAlbum(targetAlbumId).then(renderPhotos);
         targetAlbum.classList.add(ACTIVE_CLASS);
     }
