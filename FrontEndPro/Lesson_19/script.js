@@ -1,4 +1,4 @@
-const URL = 'https://jsonplaceholder.typicode.com/';
+const URL = 'https://jsonplaceholder.typicode.com/'
 const ALBUM_CLASS = 'album'
 const ACTIVE_CLASS = 'active'
 const IMAGE = 'album-image'
@@ -8,9 +8,17 @@ const images = document.querySelector('#images')
 
 albumsList.addEventListener('click', onAlbumsListClick)
 
-getAlbumList().then(renderAlbumList)
+start()
 
-getAlbum(1).then(renderPhotos);
+function start() {
+    getAlbumList().then((albums) => {
+        renderAlbumList(albums);
+        const firstAlbum = getFirstAlbum(albums)
+        getAlbum(firstAlbum).then(renderPhotos);
+        const firstAlbumEl = albumsList.querySelector(':first-child');
+        bindActiveStyle(firstAlbumEl);
+    })
+}
 
 function onAlbumsListClick(e) {
     e.preventDefault();
@@ -18,7 +26,7 @@ function onAlbumsListClick(e) {
     const targetAlbum = getTargetAlbum(e.target)
     const targetAlbumId = getTargetAlbumId(targetAlbum)
 
-    const activeAlbum = findActiveAlbum();
+    const activeAlbum = findActiveAlbum()
 
     if (targetAlbum == activeAlbum) { 
         return
@@ -31,16 +39,20 @@ function onAlbumsListClick(e) {
         getAlbum(targetAlbumId).then(renderPhotos);
         return
     }
-
-    if (!activeAlbum) {
-        images.innerHTML = '';
-        getAlbum(targetAlbumId).then(renderPhotos);
-        targetAlbum.classList.add(ACTIVE_CLASS);
-    }
 }
 
 function getAlbumList() {
-    return fetch(URL + 'albums').then(res => res.json());
+    return fetch(URL + 'albums')
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+
+        throw new Error('Can not get photos');
+    })
+    .catch((e) => {
+        throw new Error(`Can not execure request: ${e.message}`);
+    });
 }
 
 function renderAlbumList(list) {
@@ -48,17 +60,31 @@ function renderAlbumList(list) {
     albumsList.insertAdjacentHTML('beforeend', html);
 }
 
-function generateAlbumHtml(album) {
-
-    return `
-        <li data-id ="${album.id}" class = ${ALBUM_CLASS}>
-            <span>${album.title}</span>
-        </li>
-    `;
+function getFirstAlbum(albums) {
+    return albums[0].id
 }
 
-function findActiveAlbum() {
-    return albumsList.querySelector(`.${ACTIVE_CLASS}`);
+function getAlbum(id) {
+    return fetch(URL + `photos?albumId=${id}`)
+    .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+
+        throw new Error('Can not get photos');
+    })
+    .catch((e) => {
+        throw new Error(`Can not execure request: ${e.message}`);
+    });
+}
+
+function renderPhotos(list) {
+    const html = list.map(generatePhotosHtml).join('');
+    images.insertAdjacentHTML('beforeend', html);
+}
+
+function bindActiveStyle(el) {
+    el.classList.add(ACTIVE_CLASS)
 }
 
 function getTargetAlbum(el) {
@@ -69,13 +95,17 @@ function getTargetAlbumId(el) {
     return el.dataset.id
 }
 
-function getAlbum(id) {
-    return fetch(URL + `photos?albumId=${id}`).then(res => res.json());
+function findActiveAlbum() {
+    return albumsList.querySelector(`.${ACTIVE_CLASS}`);
 }
 
-function renderPhotos(list) {
-    const html = list.map(generatePhotosHtml).join('');
-    images.insertAdjacentHTML('beforeend', html);
+function generateAlbumHtml(album) {
+
+    return `
+        <li data-id ="${album.id}" class = ${ALBUM_CLASS}>
+            <span>${album.title}</span>
+        </li>
+    `;
 }
 
 function generatePhotosHtml(image) {
