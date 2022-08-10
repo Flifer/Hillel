@@ -108,8 +108,10 @@ function generateToDoHtml(toDo) {
     return `
         <li data-id ="${toDo.id}" class="toDoItem ${status}">
             <span class = "title">${toDo.title}</span>
+            <div>
             <button class="deleteBtn">Delete</button>
             <button class="editBtn">Edit</button>
+            </div>
         </li>
     `;
 }
