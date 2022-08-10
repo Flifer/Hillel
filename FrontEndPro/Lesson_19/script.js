@@ -110,8 +110,8 @@ function generateAlbumHtml(album) {
 
 function generatePhotosHtml(image) {
     return `
-    <li>
-        <img src="${image.url}" alt="img id = ${image.id}"  class = ${IMAGE}>
+    <li class = ${IMAGE}>
+        <img src="${image.url}" alt="img id = ${image.id}">
     </li>
     `
 }
