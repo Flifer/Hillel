@@ -100,6 +100,11 @@ function generateStickerHtml(sticker) {
 function createSticker() {
     return fetch(URL, {
         method: 'POST',
+        body: JSON.stringify({
+            description: '',
+            width: 200,
+            height:100,
+        }),
         headers: {'Content-type': 'application/json'},
     })
     .then(res => {
