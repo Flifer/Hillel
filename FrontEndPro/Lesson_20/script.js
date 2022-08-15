@@ -24,8 +24,8 @@ function onAddStickerBtnClick() {
 function onDeleteBtnClick(e) {
     const stickerItem = getStickerItem(e.target);
     const stickerItemId = getStickerItemId($(stickerItem));
-    SticekrApi.delete(stickerItemId)
-    .then(deleteEl(stickerItem));
+    SticekrApi.delete(stickerItemId);
+    deleteEl(stickerItem);
 }
 
 function onTextareaFocusOut(e) {
