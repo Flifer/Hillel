@@ -55,24 +55,18 @@ function onAddContactBtnClick() {
     openModal(NEW_CONTACT);
 }
 
-function onEditBtnClick(e) {
-    const contactItem = getContactItem(e.target);
-    const contactItemId = getContactItemId(contactItem);
-    ContactApi.getContact(contactItemId).then(res => openModal(res));
-}
-
-function updateContact(id, contact) {
-    ContactApi.edit(id, contact)
-    const contactItemEl =  $(`li[data-id=${id}]`);
-    ContactApi.getContact(id).then(res => contactItemEl.replaceWith(generateContactHtml(res)))
-}
-
 function onDeleteBtnClick(e) {
     const contactItem = getContactItem(e.target);
     const contactItemId = getContactItemId(contactItem)
 
     ContactApi.delete(contactItemId);
     $(contactItem).remove();
+}
+
+function onEditBtnClick(e) {
+    const contactItem = getContactItem(e.target);
+    const contactItemId = getContactItemId(contactItem);
+    ContactApi.getContact(contactItemId).then(res => openModal(res));
 }
 
 function onFormSubmit(e) {
@@ -144,4 +138,10 @@ function createContact(contact) {
       .then((newContact) => {
         renderContactItem(newContact);
       })
-  }
+}
+
+function updateContact(id, contact) {
+    ContactApi.edit(id, contact)
+    const contactItemEl =  $(`li[data-id=${id}]`);
+    ContactApi.getContact(id).then(res => contactItemEl.replaceWith(generateContactHtml(res)))
+}
