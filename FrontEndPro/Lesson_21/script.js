@@ -29,7 +29,7 @@ const $modal = $(MODAL_SELECTOR).dialog({
     },
     buttons: {
       Save: () => {
-        const contact = getContact();
+        const contact = checkContact();
   
         if (contact.id) {
           updateContact(contact.id, contact);
@@ -56,16 +56,16 @@ function onAddContactBtnClick() {
 }
 
 function onDeleteBtnClick(e) {
-    const contactItem = getContactItem(e.target);
-    const contactItemId = getContactItemId(contactItem)
+    const $contactItem = getContactItem(e.target);
+    const contactItemId = getContactItemId($contactItem)
 
     ContactApi.delete(contactItemId);
-    $(contactItem).remove();
+    $contactItem.remove();
 }
 
 function onEditBtnClick(e) {
-    const contactItem = getContactItem(e.target);
-    const contactItemId = getContactItemId(contactItem);
+    const $contactItem = getContactItem(e.target);
+    const contactItemId = getContactItemId($contactItem);
     ContactApi.getContact(contactItemId).then(res => openModal(res));
 }
 
@@ -89,10 +89,15 @@ function fillForm(contact) {
     $form.number.value = contact.number;
 }
 
-function getContact() {
+function checkContact() {
     if ($inputName.val() === '' || $inputSurname.val() === '' || $inputNumber.val() === '') {
         throw new Error('Can not create new contact with empty fields')
+    } else {
+        return getContact()
     }
+}
+
+function getContact() {
     return {
         name: $inputName.val(),
         surname: $inputSurname.val(),
@@ -104,7 +109,7 @@ function getContact() {
 function renderContactList(list) {
     const html = list.map(generateContactHtml);
 
-    $contactList.append(html);
+    $contactList.html(html);
 }
 
 function renderContactItem(contact) {
@@ -125,23 +130,21 @@ function generateContactHtml(contact) {
 }
 
 function getContactItem(el) {
-    return el.closest(`.${CONTACT_ITEM_CLASS}`);
+    return $(el.closest(`.${CONTACT_ITEM_CLASS}`));
 }
 
-function getContactItemId(contactItem) {
-    return $(contactItem).data('id')
+function getContactItemId($contactItem) {
+    return $contactItem.data('id')
 }
 
 function createContact(contact) {
     ContactApi
       .create(contact)
-      .then((newContact) => {
-        renderContactItem(newContact);
-      })
+      .then(renderContactItem)
 }
 
 function updateContact(id, contact) {
+    const $contactItemEl =  $(`li[data-id=${id}]`);
     ContactApi.edit(id, contact)
-    const contactItemEl =  $(`li[data-id=${id}]`);
-    ContactApi.getContact(id).then(res => contactItemEl.replaceWith(generateContactHtml(res)))
+    .then(res => $contactItemEl.replaceWith(generateContactHtml(res)))
 }
