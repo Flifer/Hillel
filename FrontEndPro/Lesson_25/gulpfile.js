@@ -3,7 +3,6 @@ const concat = require('gulp-concat');
 const clean = require('gulp-clean');
 const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
-const babel = require("gulp-babel");
 
 function cleanDest() {
     return src('./dest', {read: false, allowEmpty: true}).pipe(clean())
@@ -16,7 +15,6 @@ function copyJs() {
     ], {sourcemaps: true})
     .pipe(concat('script.js'))
     .pipe(uglify())
-    // .pipe(babel())
     .pipe(dest('./dest', {sourcemaps: '.'}))
 }
 
