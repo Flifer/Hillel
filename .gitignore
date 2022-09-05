@@ -2,3 +2,5 @@
 node_modules/
 /dest
 dest/
+dist/
+/dist
