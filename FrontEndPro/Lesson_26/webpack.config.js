@@ -9,7 +9,7 @@ module.exports = {
     },
     mode: 'development',
     devServer: {
-        static: './dist',
+        static: path.resolve(__dirname, 'dist'),
     },
     plugins: [new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src', 'index.html')
@@ -23,7 +23,12 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              modules: true,
+              sourceMap: true,
+              importLoaders: 1,
+              modules: {
+                localIdentName: '[name]__[local]__[contenthash:base64:5]',
+                auto: resourcePath => resourcePath.endsWith('.m.css'),
+              },
             },
           },
         ],

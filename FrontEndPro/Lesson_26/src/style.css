@@ -15,16 +15,6 @@ ul.flex {
     border: solid 1px;
 }
 
-.student-name {
-    display: inline-block;
-    width: 30%;
-}
-
-.student-mark {
-    max-width: 20px;
-    margin-left: 5px;
-}
-
 .deleteBtn {
     float: right;
 }

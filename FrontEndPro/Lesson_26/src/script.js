@@ -1,11 +1,10 @@
 import StudentsApi from './studentsApi';
 import $ from 'jquery';
 import './style.css';
+import scriptStyle from './script.m.css';
 
 const STUDENT_ITEM_CLASS = 'student-item';
 const DELETE_BTN_CLASS = 'deleteBtn';
-const STUDENT_NAME_CLASS = 'student-name';
-const STUDENT_MARK_CLASS = 'student-mark';
 
 const $studentList = $('.students-list');
 const $addStudentForm = $('#create-student');
@@ -13,7 +12,7 @@ const $studentNameInput = $('#name');
 
 $addStudentForm.on('submit', onFormSubmit);
 $studentList.on('click', `.${DELETE_BTN_CLASS}`, onDeleteBtnClick);
-$studentList.on('focusout',`.${STUDENT_MARK_CLASS}` ,onInputFocusOut);
+$studentList.on('focusout',`.${scriptStyle.mark}` ,onInputFocusOut);
 
 StudentsApi.getStudentsList().then(renderStudentsList);
 
@@ -87,17 +86,17 @@ function renderStudentItem(student) {
 function generateStudentHtml(student) {
     return `
         <li class="${STUDENT_ITEM_CLASS}" data-id ="${student.id}">
-            <span class="${STUDENT_NAME_CLASS}">${student.name}</span>
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[0]}">
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[1]}">
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[2]}">
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[3]}">
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[4]}">
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[5]}">
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[6]}">
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[7]}">
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[8]}">
-            <input type="text" class="${STUDENT_MARK_CLASS}" value="${student.marks[9]}">
+            <span class="${scriptStyle.name}">${student.name}</span>
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[0]}">
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[1]}">
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[2]}">
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[3]}">
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[4]}">
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[5]}">
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[6]}">
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[7]}">
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[8]}">
+            <input type="text" class="${scriptStyle.mark}" value="${student.marks[9]}">
             <button class="deleteBtn">Delete</button>
         </li>
     `;
