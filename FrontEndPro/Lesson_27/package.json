@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack --mode=development ",
+    "build": "webpack --mode=development",
     "start": "webpack serve --open"
   },
   "keywords": [],
