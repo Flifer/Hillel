@@ -2,9 +2,10 @@
   "name": "lesson_27",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode=development",
+    "start": "webpack serve --open"
   },
   "keywords": [],
   "author": "",
