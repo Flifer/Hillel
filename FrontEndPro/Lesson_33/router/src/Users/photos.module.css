@@ -1,0 +1,12 @@
+.albumImage {
+    margin: 10px;
+    width: 150px;
+    height: 150px;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    list-style: none;
+}
